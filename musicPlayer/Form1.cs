@@ -18,6 +18,7 @@ namespace musicPlayer
         static string _path;
         string _userpath;
         IWavePlayer _waveout = new WaveOut();
+        bool playing = false;
         public mainForm()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace musicPlayer
         {
             _path = _selfile.FileName;
             _userpath = _selfile.SafeFileName;
-            _currenttrack.Text = "Currently playing: " +_userpath;
+            _currenttrack.Text = "Currently playing: " + _userpath;
             Update();
             var file = TagLib.File.Create(_path);
             if (file.Tag.Pictures.Length >= 1)
@@ -37,8 +38,11 @@ namespace musicPlayer
             }
             AudioFileReader _audiofr = new AudioFileReader(_path);
             _waveout.Init(_audiofr);
-        }
+            string t = _audiofr.TotalTime.ToString();
 
+            int.TryParse(t, out int x);
+            _progress.Maximum = x;
+        }
         private void _choose_Click(object sender, EventArgs e)
         {
             _selfile.ShowDialog();
@@ -54,10 +58,15 @@ namespace musicPlayer
             try
             {
                 _waveout.Play();
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+            playing = true;
+            while(playing)
+            {
             }
         }
 
@@ -84,6 +93,11 @@ namespace musicPlayer
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

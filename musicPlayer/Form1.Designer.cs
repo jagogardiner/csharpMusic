@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._miniply = new System.Windows.Forms.Button();
             this._play = new System.Windows.Forms.Button();
             this._pause = new System.Windows.Forms.Button();
             this._stop = new System.Windows.Forms.Button();
@@ -37,17 +36,9 @@
             this._choose = new System.Windows.Forms.Button();
             this._currenttrack = new System.Windows.Forms.Label();
             this._albumart = new System.Windows.Forms.PictureBox();
+            this._progress = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this._albumart)).BeginInit();
             this.SuspendLayout();
-            // 
-            // _miniply
-            // 
-            this._miniply.Location = new System.Drawing.Point(12, 236);
-            this._miniply.Name = "_miniply";
-            this._miniply.Size = new System.Drawing.Size(127, 50);
-            this._miniply.TabIndex = 0;
-            this._miniply.Text = "Mini Player";
-            this._miniply.UseVisualStyleBackColor = true;
             // 
             // _play
             // 
@@ -96,9 +87,9 @@
             // 
             // _choose
             // 
-            this._choose.Location = new System.Drawing.Point(245, 263);
+            this._choose.Location = new System.Drawing.Point(12, 234);
             this._choose.Name = "_choose";
-            this._choose.Size = new System.Drawing.Size(100, 23);
+            this._choose.Size = new System.Drawing.Size(127, 23);
             this._choose.TabIndex = 5;
             this._choose.Text = "Choose song...";
             this._choose.UseVisualStyleBackColor = true;
@@ -123,11 +114,20 @@
             this._albumart.TabStop = false;
             this._albumart.Click += new System.EventHandler(this._albumart_Click);
             // 
+            // _progress
+            // 
+            this._progress.Location = new System.Drawing.Point(12, 263);
+            this._progress.Name = "_progress";
+            this._progress.Size = new System.Drawing.Size(333, 21);
+            this._progress.TabIndex = 8;
+            this._progress.Click += new System.EventHandler(this.progressBar1_Click);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 298);
+            this.ClientSize = new System.Drawing.Size(357, 312);
+            this.Controls.Add(this._progress);
             this.Controls.Add(this._currenttrack);
             this.Controls.Add(this._albumart);
             this.Controls.Add(this._choose);
@@ -135,7 +135,6 @@
             this.Controls.Add(this._stop);
             this.Controls.Add(this._pause);
             this.Controls.Add(this._play);
-            this.Controls.Add(this._miniply);
             this.Name = "mainForm";
             this.Text = "Music Player v0.0.1 Alpha";
             ((System.ComponentModel.ISupportInitialize)(this._albumart)).EndInit();
@@ -145,8 +144,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button _miniply;
         private System.Windows.Forms.Button _play;
         private System.Windows.Forms.Button _pause;
         private System.Windows.Forms.Button _stop;
@@ -155,6 +152,7 @@
         private System.Windows.Forms.Button _choose;
         private System.Windows.Forms.PictureBox _albumart;
         private System.Windows.Forms.Label _currenttrack;
+        private System.Windows.Forms.ProgressBar _progress;
     }
 }
 
